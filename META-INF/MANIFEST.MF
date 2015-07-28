@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Serial to MQTT
+Bundle-SymbolicName: nl.rudidevries.kura.serialmqtt
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Service-Component: OSGI-INF/component.xml
+Import-Package: javax.comm;version="1.2.0",
+  javax.microedition.io;resolution:=optional,
+  org.eclipse.kura.cloud;version="0.2.0",
+  org.eclipse.kura.comm;version="0.2.0",
+  org.eclipse.kura.configuration;version="0.2.0",
+  org.osgi.service.component;version="1.2.0",
+  org.osgi.service.io;version="1.0.0",
+  org.slf4j;version="1.6.4"
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.kura.api;bundle-version="1.0.4"

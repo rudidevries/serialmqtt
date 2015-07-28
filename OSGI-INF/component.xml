@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0"
+  name="nl.rudidevries.kura.serialmqtt.ProcessSerial" activate="activate"
+  deactivate="deactivate" modified="updated" enabled="true" immediate="true"
+  configuration-policy="require">
+
+  <implementation class="nl.rudidevries.kura.serialmqtt.ProcessSerial"/>
+  <property name="service.pid" type="String" value="nl.rudidevries.kura.serialmqtt.ProcessSerial"/>
+
+  <service>
+    <provide interface="nl.rudidevries.kura.serialmqtt.ProcessSerial"/>
+  </service>
+  <reference bind="setConnectionFactory" cardinality="1..1"
+    interface="org.osgi.service.io.ConnectionFactory" name="ConnectionFactory"
+    policy="static" unbind="unsetConnectionFactory" />
+    
+  <reference name="CloudService"
+    policy="static"
+    bind="setCloudService"       
+    unbind="unsetCloudService"       
+    cardinality="1..1" 
+    interface="org.eclipse.kura.cloud.CloudService"/>
+</scr:component>
