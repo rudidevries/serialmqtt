@@ -4,8 +4,6 @@
     name="ProcessSerial"
     description="Example of a Configuring KURA Application echoing data read from the serial port.">
 
-    <Icon resource="http://sphotos-a.xx.fbcdn.net/hphotos-ash4/p480x480/408247_10151040905591065_1989684710_n.jpg" size="32"/>
-
     <AD id="serial.device"
         name="serial.device"
         type="String"

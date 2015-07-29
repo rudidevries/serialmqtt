@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ProcessSerial implements ConfigurableComponent {
-	private static final String APP_ID = "process_serial";
+	private static final String APP_ID = "serial";
 
 	private static final Logger s_logger = LoggerFactory.getLogger(ProcessSerial.class);
 
