@@ -15,7 +15,6 @@ import org.eclipse.kura.cloud.CloudService;
 import org.eclipse.kura.comm.CommConnection;
 import org.eclipse.kura.comm.CommURI;
 import org.eclipse.kura.configuration.ConfigurableComponent;
-import org.eclipse.kura.message.KuraPayload;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.ComponentException;
 import org.osgi.service.io.ConnectionFactory;
@@ -281,20 +280,16 @@ public class ProcessSerial implements ConfigurableComponent {
 	}
 	
 	private void publish(String data) {
-		// Allocate a new payload
-		KuraPayload payload = new KuraPayload();
-
 		Pattern p = Pattern.compile("([^:]+?):([^:]+?):(.*)");
 		Matcher m = p.matcher(data);
 		if (m.find()) {
 			String topic = m.group(1) + "/" + m.group(2);
 			
-			// Timestamp the message
-			//payload.setTimestamp(new Date());
-			payload.setBody(m.group(3).getBytes());
+			// Allocate a new payload
+			byte[] payload = m.group(3).getBytes();
 			// Publish the message
 			try {
-			    m_cloudClient.publish(topic, payload, 1, false);
+			    m_cloudClient.publish(topic, payload, 1, false, 10);
 			    s_logger.info("Published to {} message: {}", topic, payload);
 			}
 			catch (Exception e) {
